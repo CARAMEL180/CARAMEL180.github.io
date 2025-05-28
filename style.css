@@ -79,7 +79,7 @@ h2, h3 {
 
 /* Portfolio styles */
 .content h1 {
-  color: black;
+  color: rgb(212, 126, 126);
 }
 
 #portfolio {
@@ -100,5 +100,5 @@ h2, h3 {
 
 #portfolio a {
   text-decoration: none;
-  color: #454545;
+  color: #da7a7a;
 }
