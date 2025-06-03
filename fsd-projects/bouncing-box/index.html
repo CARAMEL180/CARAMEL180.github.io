@@ -5,11 +5,22 @@
 	<meta charset="utf-8">
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
-	<style>
+	<style> 
+
+	body {
+ 		background-image: url("img/night\ sky.jpg");
+ 		background-color: #cccccc;
+		-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(121, 70, 131);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -52,8 +63,9 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
+				box.css("top", newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -66,8 +78,12 @@
 			//////////////////////////////////////////////////////////////////
 
 			// TODO 2 - Variable declarations 
-
-
+			var positionX = 0;
+			var points = 0;
+			var speed = 5;
+			var positionY = 0;
+			var speedY = 0;
+			var boardHeight = jQuery(window).height();
 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -75,7 +91,21 @@
 			turn it around! 
 			*/
 			function update() {
+				positionX+=speed;
+				positionY+=speedY;
+				moveBoxTo(positionX, positionY); // Moves the box to the far right edge
 
+				if (positionX > boardWidth){
+					speed *= -1;
+				} else if (positionX < 0){
+					speed *= -1;
+				}
+
+				if (positionY > boardHeight){
+					speedY *= -1;
+				} else if (positionY < 0){
+					speedY *= -1;
+				}
 
 			};
 
@@ -85,8 +115,15 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
+				//resets box to starting position
+				positionX = 0;
+				positionY = 0;
+				//score increases
+				points++;
+				changeBoxText(points);
 
-
+				//increase speed
+				speed = 3 * points + 10;
 			};
 
 
