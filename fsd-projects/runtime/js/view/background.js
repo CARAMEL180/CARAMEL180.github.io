@@ -31,6 +31,7 @@ var background = function (window) {
         // TODO (several):
         var tree;
         var buildings = [];
+        var toto;
 
 
       
@@ -42,11 +43,17 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.rect(canvasWidth,groundY,'LightYellow');
-            background.addChild(backgroundFill);
+            var backgroundImage = new Image();
+            backgroundImage.src = "img/roadtoOz.jpg";
+            backgroundImage.onload = function() {
+                var backgroundFill = new createjs.Bitmap(backgroundImage);               
+                backgroundFill.scaleX = app.canvas.width / backgroundImage.width;
+                backgroundFill.scaleY = groundY / backgroundImage.height;
+                background.addChildAt(backgroundFill, 0); 
+            };
             
             // TODO 2: - Add a moon and starfield
-
+            /*
             for(var i = 0; i < 100; i++){
                 var circle = draw.circle(3, "white", "LightGray", 2);
                 circle.x = canvasWidth * Math.random();
@@ -71,14 +78,20 @@ var background = function (window) {
                 background.addChild(building);
                 buildings.push(building);
             }
-            
+            */
             // TODO 3: Part 1 - Add a tree
             tree = draw.bitmap("img/tree.png");
             tree.x = 300;
             tree.y = groundY - 225;
             background.addChild(tree);
 
-
+            // add toto
+            toto = draw.bitmap("img/totoYES.png");
+            toto.x = 200;
+            toto.y = groundY - 57;
+            toto.scaleX = 0.3;
+            toto.scaleY = 0.3;
+            background.addChild(toto);
 
             
         } // end of render function - DO NOT DELETE
@@ -99,6 +112,12 @@ var background = function (window) {
                 tree.x = canvasWidth + 100;
             }
             
+            toto.x = toto.x -= 3;
+
+            if(toto.x < -250){
+                toto.x = canvasWidth + 100;
+            }
+
             // TODO 4: Part 2 - Parallax
             
             for (var i = 0; i < buildings.length; i++){
@@ -107,6 +126,9 @@ var background = function (window) {
                 if (building.x < - 100){
                     building.x = canvasWidth + 100;
                 }
+
+            
+            
             }
 
 
