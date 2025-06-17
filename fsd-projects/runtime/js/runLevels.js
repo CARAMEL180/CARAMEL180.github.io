@@ -82,12 +82,10 @@ var runLevels = function (window) {
       game.addGameItem(marker);
       marker.velocityX = speed;
       marker.onPlayerCollision = function () {
+        game.changeIntegrity(10);
+        game.increaseScore(100);
         marker.fadeOut();
-        startLevel();
-      };
-      marker.onProjectileCollision = function (){
-        marker.fadeOut();
-        startLevel();
+        
       };
 
     }
