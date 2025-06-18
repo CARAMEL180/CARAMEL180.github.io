@@ -32,6 +32,7 @@ var background = function (window) {
         var tree;
         var buildings = [];
         var toto;
+        var house;
 
 
       
@@ -94,6 +95,8 @@ var background = function (window) {
             background.addChild(toto);
 
             
+
+            
         } // end of render function - DO NOT DELETE
         
         
@@ -118,6 +121,11 @@ var background = function (window) {
                 toto.x = canvasWidth + 100;
             }
 
+            house.x = house.x -= 1;
+
+            if(house.x < -250){
+                house.x = canvasWidth + 100;
+            }
             // TODO 4: Part 2 - Parallax
             
             for (var i = 0; i < buildings.length; i++){
