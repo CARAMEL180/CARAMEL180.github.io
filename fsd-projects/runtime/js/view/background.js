@@ -96,11 +96,11 @@ var background = function (window) {
 
             // add flying house
             house = draw.bitmap("img/flyinghouseYES.png");
-            house.image.onLoad = function(){
+            house.image.onload = function(){
                 house.regX = house.image.width / 2;
                 house.regY = house.image.height / 2;
-                house.x = 500 + house.regX;
-                house.y = groundY - 370 + house.regY;
+                house.x = 1500 + house.regX;
+                house.y = groundY - 470 + house.regY;
             }
             
             house.x = 500;
@@ -134,6 +134,8 @@ var background = function (window) {
             if(toto.x < -250){
                 toto.x = canvasWidth + 100;
             }
+
+            house.x = house.x -= 1;
 
             if(house){
                 house.rotation += 2;
