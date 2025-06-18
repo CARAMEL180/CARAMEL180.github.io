@@ -94,7 +94,21 @@ var background = function (window) {
             toto.scaleY = 0.3;
             background.addChild(toto);
 
+            // add flying house
+            house = draw.bitmap("img/flyinghouseYES.png");
+            house.image.onLoad = function(){
+                house.regX = house.image.width / 2;
+                house.regY = house.image.height / 2;
+                house.x = 500 + house.regX;
+                house.y = groundY - 370 + house.regY;
+            }
             
+            house.x = 500;
+            house.y = groundY - 370;
+            house.scaleX = 0.3;
+            house.scaleY = 0.3;
+            house.rotationalVelocity = 2;
+            background.addChild(house);
 
             
         } // end of render function - DO NOT DELETE
@@ -121,11 +135,10 @@ var background = function (window) {
                 toto.x = canvasWidth + 100;
             }
 
-            house.x = house.x -= 1;
-
-            if(house.x < -250){
-                house.x = canvasWidth + 100;
+            if(house){
+                house.rotation += 2;
             }
+            
             // TODO 4: Part 2 - Parallax
             
             for (var i = 0; i < buildings.length; i++){
