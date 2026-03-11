@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>huh</title>
+    <style>
+        body {
+        background-image: url("img/realpersona.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+}
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="1340" height="620" style="border:1px solid #000000;">
+    </canvas>   
+</body>
+
+
+
+</html>
+
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    setInterval(huhBoxAnimate, 6)
+    document.addEventListener("mousemove", moveMouse)
+    var positionX = [200, 100, 10, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    var positionY = [100, 200, 10, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    //change box position
+
+    // is the separate box position that stays on mouse
+    var mouseBoxPositionX = 1000
+    var mouseBoxPositionY = 1000
+
+    function huhBoxAnimate() {
+        //moves box to the right 30x
+        //change position by adding one
+        ctx.clearRect(0, 0, 2000, 2000)
+        // ctx.fillRect(mouseBoxPositionX + 10, mouseBoxPositionY + 10, 100, 100)
+        positionX.unshift(mouseBoxPositionX - 8)
+        positionY.unshift(mouseBoxPositionY - 8)
+        for (let i = 0; i < positionX.length; i++) {            
+            ctx.fillStyle = "#FF0000"
+            ctx.strokeStyle = "black"
+            ctx.lineWidth = 5
+            ctx.fillRect(positionX[i] + 10, positionY[i] + 10, 100, 100)
+            ctx.strokeRect(positionX[i] + 9, positionY[i] + 9, 101, 101)
+        }
+        positionX.pop()
+        positionY.pop()
+
+        
+        // for (let i = 0; i < positionX.length; i++) {
+        //     ctx.fillText(positionX[i] + "," + positionY[i], 100, i * 30 + 100)   
+        // }
+    }
+
+    function moveMouse(e) {
+        e.clientX
+        e.clientY
+        mouseBoxPositionX = e.offsetX - 50
+        mouseBoxPositionY = e.offsetY - 50
+        // positionX.unshift(e.offsetX - 50)
+        // positionY.unshift(e.offsetY - 50)
+    }
+
+    // box position the same as mouse position
+
+    // use for loop to make multiple boxes
+
+    // copies of rect are made where mouse goes on screen, last rect produced erases and so on
+    // after each loop get rid of last positionX & Y
+    // add boxes when mouse moves
+    // add positions when mouse moves
+
+</script>

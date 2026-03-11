@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>huh</title>
+    <style>
+        body {
+        background-image: url("img/realpersona.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+}
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="1340" height="620" style="border:1px solid #000000;">
+    </canvas>   
+</body>
+
+
+
+</html>
+
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    main(boxes, 6)
+    document.addEventListener("mousemove", moveMouse)
+    //var positionX = [200, 100, 10, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    //var positionY = [100, 200, 10, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    //change box position
+
+    //make an object to condense vars
+
+    const boxes = []
+    for(let i = 0; i < 20; i++){
+        boxes.push({
+            X:100,
+            Y:100,
+        })
+    }
+
+    // is the separate box position that stays on mouse
+    //var mouseBoxPositionX = 1000
+    //var mouseBoxPositionY = 1000
+
+   // const mouseBox = {
+    //    mouseX: 1000,
+    //     mouseY: 1000,
+    // }
+
+    function drawBox(box){
+        //put box draw code here
+        //ctx.clearRect(0, 0, 2000, 2000)
+        ctx.fillStyle = "#FF0000"
+        ctx.strokeStyle = "black"
+        ctx.lineWidth = 5
+        //ctx.fillRect(boxes[i].X + 10, boxes[i].Y + 10, 100, 100)
+        //ctx.strokeRect(boxes[i].X + 9, boxes[i].Y + 9, 101, 101)
+    }
+
+    function main(){
+            for (let i = 0; i < boxes.length; i++) {
+            drawBox(boxes[i])   
+    }
+
+    function personaBoxAnimate() {
+        //moves box to the right 30x
+        //change position by adding one
+        ctx.clearRect(0, 0, 2000, 2000)
+        // ctx.fillRect(mouseBoxPositionX + 10, mouseBoxPositionY + 10, 100, 100)
+        boxes.unshift({
+            X: mouseX - 8,
+            Y: mouseY - 8,
+        })
+        //box.Y.unshift(mouseY - 8)
+         
+            // ctx.fillStyle = "#FF0000"
+            // ctx.strokeStyle = "black"
+            // ctx.lineWidth = 5
+            // ctx.fillRect(boxes[i].X + 10, boxes[i].Y + 10, 100, 100)
+            // ctx.strokeRect(boxes[i].X + 9, boxes[i].Y + 9, 101, 101)
+        }
+
+
+        X.pop()
+        Y.pop()
+
+        
+        // for (let i = 0; i < positionX.length; i++) {
+        //     ctx.fillText(positionX[i] + "," + positionY[i], 100, i * 30 + 100)   
+        // }
+    }
+
+    function moveMouse(e) {
+        e.clientX
+        e.clientY
+        mouseX = e.offsetX - 50
+        mouseY = e.offsetY - 50
+        // positionX.unshift(e.offsetX - 50)
+        // positionY.unshift(e.offsetY - 50)
+    }
+
+    // box position the same as mouse position
+
+    // use for loop to make multiple boxes
+
+    // copies of rect are made where mouse goes on screen, last rect produced erases and so on
+    // after each loop get rid of last positionX & Y
+    // add boxes when mouse moves
+    // add positions when mouse moves
+
+</script>
